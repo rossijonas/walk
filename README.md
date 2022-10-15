@@ -21,7 +21,7 @@ Use the `walk` CLI tool to walk a directory tree listing or executing actions on
 
 - Allow filtering by minimum file size.
 
-- Allow executing actions on each file found. (⚠️ To do)
+- Allow deleting the files matched.
 
 ## Installation
 
@@ -44,6 +44,8 @@ Use the `walk` CLI tool to walk a directory tree listing or executing actions on
 ```
 $ walk -h
 Usage of walk:
+  -del              
+        Delete files
   -ext string
         File extension to filter out
   -list
@@ -82,6 +84,12 @@ $ walk -root /tmp/testdir/
 $ walk -root /tmp/testdir/ -ext .log
 /tmp/testdir/logs/log1.log
 /tmp/testdir/logs/log2.log
+```
+
+#### Delete all files with `.log` extension inside `/tmp/testdir/` and its subdirectories:
+
+```
+$ walk -root /tmp/testdir/ -ext .log -del
 ```
 
 ## Backlog
