@@ -23,8 +23,6 @@ Use the `walk` CLI tool to walk a directory tree listing or executing actions on
 
 - Allow executing actions on each file found. (⚠️ To do)
 
-_(This is an exercise from the book "Powerful Command-Line Applications in Go".)_
-
 ## Installation
 
 ### Requirements:
@@ -91,3 +89,8 @@ $ walk -root /tmp/testdir/ -ext .log
 - Add example Gif to README file.
 
 - Allow executing actions in each file found.
+
+## Credits
+
+_This is an exercise from the book "Powerful Command-Line Applications in Go"._
+
