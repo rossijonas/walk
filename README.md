@@ -92,5 +92,5 @@ $ walk -root /tmp/testdir/ -ext .log
 
 ## Credits
 
-_This is an exercise from the book "Powerful Command-Line Applications in Go"._
+_This is an exercise from the book "Powerful Command-Line Applications in Go", although it may have some differences from the original exercise._
 
