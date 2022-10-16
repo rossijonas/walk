@@ -21,7 +21,7 @@ Use the `walk` CLI tool to walk a directory tree listing or executing actions on
 
 - Allow filtering by minimum file size.
 
-- Allow deleting the files matched.
+- Allow deleting the files matched (with option to provide logs).
 
 ## Installation
 
