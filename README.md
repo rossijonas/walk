@@ -50,6 +50,8 @@ Usage of walk:
         File extension to filter out
   -list
         List files only
+  -log string
+        Log deletes to this file
   -root string
         Root directory to start (default ".")
   -size int
@@ -90,6 +92,18 @@ $ walk -root /tmp/testdir/ -ext .log
 
 ```
 $ walk -root /tmp/testdir/ -ext .log -del
+```
+
+#### Delete all files with `.txt` extension inside `/tmp/testdir/` and its subdirectories, and log deleted files to `deleted_files.log`:
+
+```
+$ walk -root /tmp/testdir -ext .txt -log deleted_files.log -del
+
+$ cat deleted_files.log
+DELETED FILE: 2022/10/15 21:02:15 /tmp/testdir/file1.txt
+DELETED FILE: 2022/10/15 21:02:15 /tmp/testdir/text/text1.txt
+DELETED FILE: 2022/10/15 21:02:15 /tmp/testdir/text/text2.txt
+DELETED FILE: 2022/10/15 21:02:15 /tmp/testdir/text/text3.txt
 ```
 
 ## Backlog
