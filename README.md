@@ -23,6 +23,8 @@ Use the `walk` CLI tool to walk a directory tree listing or executing actions on
 
 - Allow deleting the files matched (with option to provide logs).
 
+- Allow archiving a compressed copy of the files matched.
+
 ## Installation
 
 ### Requirements:
@@ -44,6 +46,8 @@ Use the `walk` CLI tool to walk a directory tree listing or executing actions on
 ```
 $ walk -h
 Usage of walk:
+  -archive string
+        Path to directory where files should be archived
   -del              
         Delete files
   -ext string
@@ -106,11 +110,37 @@ DELETED FILE: 2022/10/15 21:02:15 /tmp/testdir/text/text2.txt
 DELETED FILE: 2022/10/15 21:02:15 /tmp/testdir/text/text3.txt
 ```
 
+#### Compress and archive all files with `.txt` extension inside `/tmp/testdir/` and its subdirectories, delete them after archiving, and log deleted files to `deleted_files.log`:
+
+```
+$ mkdir /tmp/testdir_txt_bkp
+
+$ walk -root /tmp/testdir -ext .txt -archive /tmp/testdir_txt_bkp/ -log deleted_files.log -del
+
+$ tree /tmp/testdir_txt_bkp
+/tmp/testdir_txt_bkp
+├── file1.txt.gz
+└── text
+    ├── text1.txt.gz
+    ├── text2.txt.gz
+    └── text3.txt.gz
+
+$ cat deleted_files.log
+DELETED FILE: 2022/10/30 19:18:30 /tmp/testdir/file1.txt
+DELETED FILE: 2022/10/30 19:18:30 /tmp/testdir/text/text1.txt
+DELETED FILE: 2022/10/30 19:18:30 /tmp/testdir/text/text2.txt
+DELETED FILE: 2022/10/30 19:18:30 /tmp/testdir/text/text3.txt
+```
+
 ## Backlog
 
 - Add example Gif to README file.
 
-- Allow executing actions in each file found.
+- Allow the user to provide more than one file extension.
+
+- Add more filtering options such as files modified after a certain date or files with long file names.
+
+- Create a companion tool for walk that restores the archived files in case they are needed again. Recreate the original directory by using the same approach you used to create the destination directory in the `archiveFile` function. Then use the `gzip.Reader` type from the `compress/gzip` package to uncompress the archive files.
 
 ## Credits
 
